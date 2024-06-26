@@ -13,8 +13,7 @@ export function useMainContract() {
         recent_sender: Address;
         owner_address: Address;
     }>();
-    const [balance, setBalance] = useState<null | {
-    }>();
+    const [balance, setBalance] = useState<null | number>();
     const mainContract = useAsyncInitialize(async () => {
         if (!client) return;
         const contract = new MainContract(
@@ -49,7 +48,7 @@ export function useMainContract() {
             return mainContract?.sendDeposit(sender, toNano("1"),);
         },
         sendWithdrawalRequest: () => {
-            return mainContract?.sendWithdrawalRequest(sender, toNano("0.05"), toNano("0.1"));
+            return mainContract?.sendWithdrawalRequest(sender, toNano("0.05"), toNano("1"));
         },
     };
 }

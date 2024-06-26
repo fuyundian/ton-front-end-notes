@@ -1,5 +1,4 @@
-import { Address, beginCell, Cell, contractAddress, ContractProvider, Sender, SendMode, Contract } from "@ton/core";
-// import { Maybe } from "@ton/core/dist/utils/maybe";
+import { Address, beginCell, Cell, contractAddress, ContractProvider, Sender, SendMode, Contract, ContractABI } from "ton-core";
 
 
 export type MainContractConfig = {
@@ -19,10 +18,8 @@ export function mainContractConfigToCell(config: MainContractConfig): Cell {
 export class MainContract implements Contract {
     constructor(
         readonly address: Address,
-        readonly init?: { code: Cell; data: Cell }
-        // readonly address: Address,
-        // readonly init?: Maybe<StateInit>,
-        // readonly abi?: Maybe<ContractABI>,
+        readonly init?: { code: Cell; data: Cell },
+        readonly abi?: ContractABI,
     ) {
 
     }

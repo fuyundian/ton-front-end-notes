@@ -24,11 +24,11 @@ function App() {
           <b>合约地址</b>
           <div className='Hint'>{contract_address?.slice(0, 30) + "..."}</div>
           <b>合约余额</b>
-          <div className='Hint'>{balance / 1000000000}</div>
+          <div className='Hint'>{balance ? balance / 1000000000 : 0} TON</div>
           <b>发送地址</b>
-          <div className='Hint'>{recent_sender?.toString()?.slice(0, 30) + "..."}</div>
+          <div className='Hint'>{recent_sender?.toString()} </div>
           <b>所有者地址</b>
-          <div className='Hint'>{owner_address?.toString()?.slice(0, 30) + "..."}</div>
+          <div className='Hint'>{owner_address?.toString()}</div>
         </div>
 
         <div className='Card'>
