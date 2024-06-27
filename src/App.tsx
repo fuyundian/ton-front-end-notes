@@ -41,18 +41,16 @@ function App() {
           <b>Counter Value</b>
           <div>{counter_value ?? "Loading..."}</div>
         </div>
-        <div className='Card'>
-          {connected && (
-            <a
-              onClick={() => {
-                showAlert();
-              }}
-            >
-              显示预警
-            </a>
-          )}
-
-        </div>
+        {connected && (
+          <a
+            onClick={() => {
+              showAlert();
+            }}
+          >
+            显示预警
+          </a>
+        )}
+        <br />
         {connected && (
           <a
             onClick={() => {
@@ -62,28 +60,27 @@ function App() {
             计数+1
           </a>
         )}
-        <div className='Card'>
-          {connected && (
-            <a
-              onClick={() => {
-                sendDeposit();
-              }}
-            >
-              存入1TON
-            </a>
-          )}
-        </div>
-        <div className='Card'>
-          {connected && (
-            <a
-              onClick={() => {
-                sendWithdrawalRequest();
-              }}
-            >
-              取款1TON
-            </a>
-          )}
-        </div>
+        <br />
+        {connected && (
+          <a
+            onClick={() => {
+              sendDeposit();
+            }}
+          >
+            存入1TON
+          </a>
+        )}
+        <br />
+        {connected && (
+          <a
+            onClick={() => {
+              sendWithdrawalRequest();
+            }}
+          >
+            取款1TON
+          </a>
+        )}
+
       </div>
     </div>
   );
