@@ -26,7 +26,8 @@ function App() {
       </div>
       <div>
         <div className='Card'>
-          <b>{WebApp.platform}</b>
+          <b>客户端</b>
+          <div className='Hint'>{WebApp.platform}</div>
           <b>合约地址</b>
           <div className='Hint'>{contract_address?.slice(0, 30) + "..."}</div>
           <b>合约余额</b>
