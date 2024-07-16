@@ -1,8 +1,10 @@
 import "./App.css";
-import { TonConnectButton } from "@tonconnect/ui-react";
+import { TonConnectButton, useTonConnectUI } from "@tonconnect/ui-react";
 import { useMainContract } from "./hooks/useMainContract";
-import { useTonConnect } from "./hooks/useTonConnect";
-import WebApp from '@twa-dev/sdk'
+import { fromNano } from "ton-core";
+import WebApp from "@twa-dev/sdk";
+import { useState } from "react";
+
 function App() {
   const {
     contract_address,
@@ -14,8 +16,15 @@ function App() {
     sendDeposit,
     sendWithdrawalRequest
   } = useMainContract();
-  const { connected } = useTonConnect()
-
+  const [connected, setConnected] = useState(Boolean);
+  const [connectionUi] = useTonConnectUI();
+  connectionUi.onStatusChange((status) => {
+    if (status) {
+      setConnected(true)
+    } else {
+      setConnected(false)
+    }
+  })
   const showAlert = () => {
     WebApp.showAlert("Hey there!");
   };
@@ -31,7 +40,7 @@ function App() {
           <b>合约地址</b>
           <div className='Hint'>{contract_address?.slice(0, 30) + "..."}</div>
           <b>合约余额</b>
-          <div className='Hint'>{balance ? balance / 1000000000 : 0} TON</div>
+          <div className='Hint'>{fromNano(balance ? balance : 0)} TON</div>
           <b>发送地址</b>
           <div className='Hint'>{recent_sender?.toString()} </div>
           <b>所有者地址</b>
